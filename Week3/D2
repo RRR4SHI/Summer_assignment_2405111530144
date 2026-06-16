@@ -1,1 +1,73 @@
+//MERGE TWO SORTED LISTS
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        ListNode*dummy=new ListNode(0);
+        ListNode*curr=dummy;
+
+        while (list1 && list2){
+            if(list1->val > list2->val){
+                curr->next = list2;
+                list2 = list2->next;
+            } else {
+                curr->next = list1;
+                list1 = list1->next;
+            }
+            curr = curr->next;
+        }
+
+        curr->next = list1 ? list1 : list2;
+
+        ListNode* head = dummy->next;
+        delete dummy;
+        return head;        
+    }
+};
+-------------------------------------------------------------------------------
+//REMOVE NTH NODE FROM END OF LIST
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode* slow=head;
+        ListNode* fast=head;
+        ListNode* prev=nullptr;
+        int k=n;
+        while (k>0)
+        {
+            fast=fast->next;
+            k--;
+        }
+        while (fast != nullptr)
+        {
+            prev=slow;
+            slow=slow->next;
+            fast=fast->next;
+        }
+        if (prev != nullptr)
+            prev->next=slow->next;
+        else
+            head=head->next;
+
+        return head;        
+    }
+};
+----------------------------------------------------------------------------------
+//PALINDROME LINKED LIST
+class Solution {
+public:
+    bool isPalindrome(ListNode* head) {
+        vector<int> listVals;
+        while (head) {
+            listVals.push_back(head->val);
+            head = head->next;
+        }
+        
+        int left = 0, right = listVals.size() - 1;
+        while (left < right && listVals[left] == listVals[right]) {
+            left++;
+            right--;
+        }
+        return left >= right;
+    }
+};
 
