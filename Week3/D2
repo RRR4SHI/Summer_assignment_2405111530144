@@ -1,1 +1,54 @@
+//LINKED LIST CYCLE
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        ListNode*fast=head;
+        ListNode*slow=head;
+
+        while(fast!=nullptr&&fast->next!=nullptr){
+        fast=fast->next->next;
+        slow=slow->next;
+
+        if(fast==slow){
+            return true;
+        }
+
+    }
+    return false;
+}
+};
+-----------------------------------------------------------------
+//REVERSE LINKED LIST
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        ListNode*prev=nullptr;
+        ListNode*curr=head;
+        while(curr!=nullptr){
+            ListNode*temp=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=temp;
+        }
+        return prev;
+    }
+};
+------------------------------------------------------------------
+//MIDDLE OF LINKED LIST
+class Solution {
+public:
+    ListNode* middleNode(ListNode* head) {
+        if (head == nullptr || head->next == nullptr) 
+        return head;
+        ListNode*slow=head;
+        ListNode*fast=head;
+        
+        while(fast!=nullptr&&fast->next!=nullptr){
+            fast=fast->next->next;
+            slow=slow->next;
+            }
+            return slow;
+            }
+        };
+
 
