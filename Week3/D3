@@ -42,8 +42,6 @@ public:
     for(int i=0; i<nums1.size(); i++){
       solution.push_back(mp[nums1[i]]);
     }
-
-
     return solution;
   }
 };
